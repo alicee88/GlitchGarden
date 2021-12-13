@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Attacker : MonoBehaviour
 {
-    float walkSpeed = 1.0f;
+    float currentSpeed = 0.0f;
 
     // Start is called before the first frame update
     void Start()
@@ -12,10 +12,14 @@ public class Attacker : MonoBehaviour
         
     }
 
-    // Update is called once per frame
     void Update()
     {
-        transform.Translate(Vector2.left * walkSpeed * Time.deltaTime);
+        transform.Translate(Vector2.left * currentSpeed * Time.deltaTime);
         
+    }
+
+    public void SetMovementSpeed(float speed)
+    {
+        currentSpeed = speed;
     }
 }
