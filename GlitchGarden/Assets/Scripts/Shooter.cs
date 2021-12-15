@@ -2,12 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Defender : MonoBehaviour
+public class Shooter : MonoBehaviour
 {
+    [SerializeField] GameObject projectilePrefab;
+    [SerializeField] GameObject gun;
+
     // Start is called before the first frame update
     void Start()
     {
-        
     }
 
     // Update is called once per frame
@@ -16,8 +18,8 @@ public class Defender : MonoBehaviour
         
     }
 
-    public void DefenderShootProjectile(float hello)
+    public void Fire()
     {
-        Debug.Log("SHOOT!");
+        Instantiate(projectilePrefab, gun.transform.position, transform.rotation);
     }
 }
