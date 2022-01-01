@@ -7,20 +7,22 @@ public class Shooter : MonoBehaviour
     [SerializeField] GameObject projectilePrefab;
     [SerializeField] GameObject gun;
     AttackerSpawner myLaneSpawner;
+    Animator animator;
 
     private void Start()
     {
+        animator = GetComponent<Animator>();
         SetLaneSpawner();
     }
     private void Update()
     {
         if(IsAttackerInLane())
         {
-            Debug.Log("SHOOT!");
+            animator.SetBool("IsAttacking", true);
         }
         else
         {
-            Debug.Log("Sit and wait");
+            animator.SetBool("IsAttacking", false);
         }
     }
 
@@ -43,7 +45,19 @@ public class Shooter : MonoBehaviour
     private bool IsAttackerInLane()
     {
         // If my lane spawner child count is <= 0, return false
-        return myLaneSpawner.transform.childCount > 0; 
+        if(!myLaneSpawner)
+        {
+            return false;
+        }
+
+        if (myLaneSpawner.transform.childCount <= 0)
+        {
+            return false;
+        }
+        else
+        {
+            return true;
+        }
     }
 
     public void Fire()
