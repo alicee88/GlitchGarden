@@ -5,8 +5,8 @@ using UnityEngine;
 public class AttackerSpawner : MonoBehaviour
 {
     bool spawn = true;
-    float minSpawnTime = 1f;
-    float maxSpawnTime = 5f;
+    [SerializeField] float minSpawnTime = 1f;
+    [SerializeField] float maxSpawnTime = 5f;
     [SerializeField] Attacker attackerPrefab;
     // Start is called before the first frame update
     IEnumerator Start()
