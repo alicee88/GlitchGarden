@@ -5,7 +5,7 @@ using UnityEngine;
 public class DefenderSpawner : MonoBehaviour
 {
     Defender defender;
-
+   
     public void SetSelectedDefender(Defender selectedDefender)
     {
         defender = selectedDefender;
@@ -45,7 +45,7 @@ public class DefenderSpawner : MonoBehaviour
         if(starDisplay.HaveEnoughStars(defenderCost))
         {
             SpawnDefender(gridPos);
-            starDisplay.SpendStars(defenderCost);
+            starDisplay.SpendStars(defenderCost);           
         }
     }
 }
