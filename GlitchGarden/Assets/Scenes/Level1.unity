@@ -358,7 +358,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d44f0d34bf8b82d4fbe8980e424966be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minSpawnTime: 1
+  minSpawnTime: 5
   maxSpawnTime: 5
   attackerPrefab: {fileID: 5804409313656067162, guid: f75dfbea8c27b9546b3316eb72534e06, type: 3}
 --- !u!4 &553846527 stripped
