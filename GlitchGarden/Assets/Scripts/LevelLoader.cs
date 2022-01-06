@@ -6,6 +6,8 @@ using UnityEngine.SceneManagement;
 public class LevelLoader : MonoBehaviour
 {
     float loadTime = 4.0f;
+    float loseTime = 1.5f;
+
     int currentSceneIndex;
 
     // Start is called before the first frame update
@@ -14,7 +16,7 @@ public class LevelLoader : MonoBehaviour
         currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
         if(currentSceneIndex == 0)
         {
-            StartCoroutine(WaitForSeconds());
+            StartCoroutine(WaitForSeconds(loadTime));
         }
         
     }
@@ -25,14 +27,19 @@ public class LevelLoader : MonoBehaviour
         
     }
 
-    private IEnumerator WaitForSeconds()
+    private IEnumerator WaitForSeconds(float time)
     {
-        yield return new WaitForSeconds(loadTime);
+        yield return new WaitForSeconds(time);
         LoadNextScene();
     }
 
     public void LoadNextScene()
     {
         SceneManager.LoadScene(currentSceneIndex + 1);
+    }
+
+    public void LoadLoseScene()
+    {
+        StartCoroutine(WaitForSeconds(loseTime));
     }
 }
