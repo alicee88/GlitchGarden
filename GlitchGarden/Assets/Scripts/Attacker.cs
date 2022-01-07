@@ -24,6 +24,16 @@ public class Attacker : MonoBehaviour
         
     }
 
+    private void Awake()
+    {
+        FindObjectOfType<LevelController>().AddAttacker();
+    }
+
+    private void OnDestroy()
+    {
+        FindObjectOfType<LevelController>().RemoveAttacker();
+    }
+
     public void SetMovementSpeed(float speed)
     {
         currentSpeed = speed;

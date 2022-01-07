@@ -6,6 +6,12 @@ using UnityEngine.UI;
 public class GameTimer : MonoBehaviour
 {
     [SerializeField] float levelTime = 10f;
+    LevelController levelController;
+
+    private void Start()
+    {
+        levelController = FindObjectOfType<LevelController>();
+    }
 
     // Update is called once per frame
     void Update()
@@ -16,7 +22,7 @@ public class GameTimer : MonoBehaviour
 
         if(timerFinished)
         {
-            Debug.Log("TIMER FINISHED!");
+            levelController.LevelTimerFinished();
         }
     }
 }

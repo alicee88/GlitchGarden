@@ -8,5 +8,6 @@ public class BaseCollider : MonoBehaviour
     {
         var healthText = FindObjectOfType<HealthDisplay>();
         healthText.DealDamage();
+        FindObjectOfType<LevelController>().RemoveAttacker();
     }
 }

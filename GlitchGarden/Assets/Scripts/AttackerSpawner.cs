@@ -4,14 +4,15 @@ using UnityEngine;
 
 public class AttackerSpawner : MonoBehaviour
 {
-    bool spawn = true;
     [SerializeField] float minSpawnTime = 1f;
     [SerializeField] float maxSpawnTime = 5f;
     [SerializeField] Attacker[] attackerPrefabArray;
 
+    bool spawn = true;
+
     IEnumerator Start()
     {
-        while(spawn)
+        while (spawn)
         {
             yield return new WaitForSeconds(Random.Range(minSpawnTime, maxSpawnTime));
             SpawnAttacker();
@@ -30,4 +31,8 @@ public class AttackerSpawner : MonoBehaviour
         newAttacker.transform.parent = transform;
     }
 
+    public void StopSpawning()
+    {
+        spawn = false;
+    }
 }
