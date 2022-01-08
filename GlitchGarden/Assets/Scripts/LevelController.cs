@@ -4,8 +4,16 @@ using UnityEngine;
 
 public class LevelController : MonoBehaviour
 {
+    [SerializeField] GameObject winLabel;
+
     int liveAttackers = 0;
     bool levelTimerFinished = false;
+    float winTime = 4f;
+
+    private void Start()
+    {
+        winLabel.SetActive(false);
+    }
 
     public void AddAttacker()
     {
@@ -15,12 +23,12 @@ public class LevelController : MonoBehaviour
     public void RemoveAttacker()
     {
         liveAttackers--;
-        Debug.Log("REMOVING ATTACKER " + liveAttackers);
 
         if (levelTimerFinished && liveAttackers <= 0)
         {
-            Debug.Log("WIN SCREEN!");
+            StartCoroutine(HandleWin());
         }
+        
     }
 
     public void LevelTimerFinished()
@@ -31,5 +39,14 @@ public class LevelController : MonoBehaviour
         {
             spawners[i].StopSpawning();
         }
+    }
+
+    private IEnumerator HandleWin()
+    {
+        winLabel.SetActive(true);
+        GetComponent<AudioSource>().Play();
+        yield return new WaitForSeconds(winTime);
+        FindObjectOfType<LevelLoader>().LoadNextScene();
+
     }
 }
