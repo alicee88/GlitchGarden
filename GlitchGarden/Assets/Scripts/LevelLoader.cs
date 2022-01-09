@@ -21,12 +21,6 @@ public class LevelLoader : MonoBehaviour
         
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     private IEnumerator WaitForSeconds(float time)
     {
         yield return new WaitForSeconds(time);
@@ -42,4 +36,15 @@ public class LevelLoader : MonoBehaviour
     {
         StartCoroutine(WaitForSeconds(loseTime));
     }
+
+    public void ReloadScene()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    public void LoadStartScene()
+    {
+        SceneManager.LoadScene(0);
+    }
+
 }

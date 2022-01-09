@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class HealthDisplay : MonoBehaviour
 {
     [SerializeField] int playerHealth = 5;
+
     Text healthText;
 
     // Start is called before the first frame update
@@ -22,7 +23,7 @@ public class HealthDisplay : MonoBehaviour
         if(playerHealth <= 0)
         {
             playerHealth = 0;
-            FindObjectOfType<LevelLoader>().LoadLoseScene();
+            FindObjectOfType<LevelController>().HandleLose();
         }
 
         healthText.text = playerHealth.ToString();
