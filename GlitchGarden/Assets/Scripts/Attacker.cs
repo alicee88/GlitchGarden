@@ -26,12 +26,22 @@ public class Attacker : MonoBehaviour
 
     private void Awake()
     {
-        FindObjectOfType<LevelController>().AddAttacker();
+        var levelController = FindObjectOfType<LevelController>();
+        if(levelController)
+        {
+            levelController.AddAttacker();
+        }
     }
 
     private void OnDestroy()
     {
-        FindObjectOfType<LevelController>().RemoveAttacker();
+        var levelController = FindObjectOfType<LevelController>();
+
+        if(levelController)
+        {
+            levelController.RemoveAttacker();
+        }
+        
     }
 
     public void SetMovementSpeed(float speed)
